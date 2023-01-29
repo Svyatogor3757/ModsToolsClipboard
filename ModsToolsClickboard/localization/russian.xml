@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Lang name="Русский" filename="russian.xml" version="1.0.0">
+<Item id="labelDesk" text="Программа анализирует ссылки с Мастерской Steam с целью найти местоположение мода на компьютере"/>
+<Item id="buttonPasteBufer" text="Вставить из буфера"/>
+<Item id="buttonAnalysis" text="Анализ"/>
+<Item id="labellinkdesk" text="Ссылка(-и) на мод(-ы) из мастерской steam:"/>
+<Item id="checkBoxAnalysis" text="Анализировать ссылки в буфер обмена"/>
+<Item id="checkBoxIgnoreErr" text="Игнорировать ошибки анализа"/>
+<Item id="checkBoxMoreInf" text="Отображать больше информации"/>
+<Item id="checkBoxSaveWindowSize" text="Сохранять параметры окна"/>
+<Item id="buttonDirsSteam" text="Папки Steam"/>
+<Item id="buttonAdd" text="Добавить"/>
+<Item id="buttonDelete" text="Удалить"/>
+<Item id="buttonClose" text="Закрыть"/>
+<Item id="buttonSave" text="Сохранить"/>
+<Item id="labelErrHelp" text="Основные проблемы"/>
+<Item id="CopyrightNotice" text="Уведомление об авторских правах"/>
+<Item id="MainForm" text="Анализ мода"/>
+<Item id="ModInfo" text="Mod Info"/>
+<Item id="labelGameNameDesk" text="Мод принадлежит игре:"/>
+<Item id="labelModeName" text="Название мода:"/>
+<Item id="labelModeID" text="ID мода:"/>
+<Item id="labelGameID" text="ID игры:"/>
+<Item id="labelModDir" text="Папка мода:"/>
+<Item id="labelModeDir2" text="Папка мода 2:"/>
+<Item id="labelGameDir" text="Папка игры:"/>
+<Item id="labelLink" text="Ссылка:"/>
+<Item id="buttonOpenModDir" text="Открыть папку мода"/>
+<Item id="buttonOpenGameDir" text="Открыть папку игры"/>
+<Item id="ProgInf" text="Уведомление об авторских правах"/>
+<Item id="NoticeErrReestr" text="-Информация в реестре о Steam не найдена. Это повлияет только на определение игры, но не папки мода."/>
+<Item id="NoticeErrSteam" text="-Не найдена информация о Steam. Попробуйте запустить программу от имени администратора, чтобы программа проверила другие разделы steam\n"/>
+<Item id="NoticeErrSteamPath" text="-Не найден путь к Steam...\n"/>
+<Item id="NoticeHelp" text="В данную область можно вставлять одну/несколько ссылок, id модов.\nИспользуйте в качестве разделителей: новую строку, пробел"/>
+<Item id="NoticeHelpTitle" text="Справка"/>
+<Item id="NoticeNotInstall" text="Не установлено."/>
+<Item id="NoticeGameErr" text="Игра не определена."/>
+<Item id="NoticeLinkErr" text="Ссылка не распознана.."/>
+<Item id="NoticeClipboard" text="Скопировано в буфер обмена.."/>
+</Lang>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Lang name="English" filename="english.xml" version="1.0.0">
+<Item id="labelDesk" text="The program analyzes links from the Steam Workshop in order to find the location of the mod on the computer"/>
+<Item id="buttonPasteBufer" text="Paste from Buffer"/>
+<Item id="buttonAnalysis" text="Analysis"/>
+<Item id="labellinkdesk" text="Link(s) to the mod(s) from the steam workshop:"/>
+<Item id="checkBoxAnalysis" text="Analyze links to the clipboard"/>
+<Item id="checkBoxIgnoreErr" text="Ignore analysis errors"/>
+<Item id="checkBoxMoreInf" text="Display more information"/>
+<Item id="checkBoxSaveWindowSize" text="Save window size"/>
+<Item id="buttonDirsSteam" text="Steam Paths"/>
+<Item id="buttonAdd" text="Add"/>
+<Item id="buttonDelete" text="Remove"/>
+<Item id="buttonClose" text="Close"/>
+<Item id="buttonSave" text="Save"/>
+<Item id="labelErrHelp" text="The main errors"/>
+<Item id="CopyrightNotice" text="Copyright Notice"/>
+<Item id="MainForm" text="mod Analysis"/>
+<Item id="ModInfo" text="Mod Info"/>
+<Item id="labelGameNameDesk" text="The mod belongs to the game:"/>
+<Item id="labelModeName" text="Mod name:"/>
+<Item id="labelModeID" text="mod ID:"/>
+<Item id="labelGameID" text="game ID:"/>
+<Item id="labelModDir" text="Mod path:"/>
+<Item id="labelModeDir2" text="Mod path 2:"/>
+<Item id="labelGameDir" text="Game path:"/>
+<Item id="labelLink" text="Link:"/>
+<Item id="buttonOpenModDir" text="Open the Mods folder"/>
+<Item id="buttonOpenGameDir" text="Open the Game folder"/>
+<Item id="ProgInf" text="Copyright Notice"/>
+<Item id="NoticeErrReestr" text="* Information about Steam was not found in the registry. This will only affect the definition of the game, but not the mod folder.."/>
+<Item id="NoticeErrSteam" text="* No Steam information found. Try running the program as an administrator so that the program checks other sections of steam\n"/>
+<Item id="NoticeErrSteamPath" text="* The path to Steam was not found...\n"/>
+<Item id="NoticeHelp" text="In this area, you can insert one or more links, mod IDs.\n use as delimiters: new line, space"/>
+<Item id="NoticeHelpTitle" text="Reference"/>
+<Item id="NoticeNotInstall" text="Not installed."/>
+<Item id="NoticeGameErr" text="The game is not defined."/>
+<Item id="NoticeLinkErr" text="The link is not recognized.."/>
+<Item id="NoticeClipboard" text="Copied to Clipboard.."/>
+</Lang>
