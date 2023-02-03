@@ -29,7 +29,7 @@ Examples:
 6. Программа отображает картинку игры, если её найдет.
 
 Примеры:
-* Ссылка на мод Больше боевой анимации на игру Кенши
+* Ссылка на мод More combat animation на игру Кенши
 >https://steamcommunity.com/sharedfiles/filedetails/?id=1691422256
 * Ссылка на игру Кенши
 >https://store.steampowered.com/app/233860/Kenshi/
