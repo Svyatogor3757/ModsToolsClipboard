@@ -125,10 +125,9 @@ namespace ModsToolsClipboard
         private void SaveSettings() {
             if (!File.Exists(filesettings)) File.Create(filesettings).Close();
             INIManager FS = new INIManager(filesettings);
-            Console.WriteLine(FS.Path);
             FS.WritePrivateString("Main", "AnalysisClipboard", checkBoxAnalysis.Checked.ToString());
             FS.WritePrivateString("Main", "MoreInf", checkBoxMoreInf.Checked.ToString());
-            FS.WritePrivateString("Main", "IgnoreErr", checkBoxIgnoreErr.Checked.ToString());
+            FS.WritePrivateString("Main", "IgnoreErr", is_ignore_error.ToString());
             FS.WritePrivateString("Main", "SaveWindowSize", checkBoxSaveWindowSize.Checked.ToString());
             FS.WritePrivateString("Main", "Language", currentlangName);
             if (checkBoxSaveWindowSize.Checked) {
@@ -164,6 +163,7 @@ namespace ModsToolsClipboard
                 a.Show();
             } else {
                 foreach (string link in text.Split(sep)) {
+                    if (link.Length < 3) continue;
                     var a = new ModInfo(link, checkBoxMoreInf.Checked);
                     if (!a.IsDisposed) a.Show();
                 }
@@ -190,23 +190,15 @@ namespace ModsToolsClipboard
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e) {
-            SaveSettings();
             timer_a.Enabled = checkBoxAnalysis.Checked;
         }
-
-
         private void checkBox2_CheckedChanged(object sender, EventArgs e) {
-            SaveSettings();
         }
         private void checkBox3_CheckedChanged(object sender, EventArgs e) {
-            SaveSettings();
         }
         private void checkBox4_CheckedChanged(object sender, EventArgs e) {
-            SaveSettings();
             is_ignore_error = checkBoxIgnoreErr.Checked;
         }
-
-
 
         private void button1_LinkClicked(object sender, EventArgs e) {
              panel5.Visible = true;
@@ -304,11 +296,12 @@ namespace ModsToolsClipboard
         }
 
         public Dictionary<string, string> languageLoad(string lang) {
+            Dictionary<string, string> currentlang = new Dictionary<string, string>();
             string langfile;
             if (langs.ContainsKey(lang))
                 langfile = $"{ filelocalizationdir}/{ langs[lang]}";
-            else return null;
-            Dictionary<string, string> currentlang = new Dictionary<string, string>();
+            else return currentlang;
+            
             if (!string.IsNullOrEmpty(langfile) && File.Exists(langfile)) {
                 XmlDocument xDoc = new XmlDocument();
                 xDoc.Load(langfile);
@@ -316,6 +309,8 @@ namespace ModsToolsClipboard
                 if (xRoot != null)
                     foreach (XmlElement xnode in xRoot) currentlang.Add(xnode.GetAttribute("id"), xnode.GetAttribute("text"));
             }
+            if (lang.ToLower() == "default")
+                Application.Restart();
             languageUse(currentlang, this);
 
             languageGet(currentlang, "NoticeErrReestr", ref NoticeErrReestr);

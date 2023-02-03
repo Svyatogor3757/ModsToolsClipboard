@@ -58,6 +58,8 @@ namespace ModsToolsClipboard
             string GameName = "";
             string ModDir = "...";
             string ModDir2;
+            // А вот ждем, пока инициализируется окно
+            while (!IsHandleCreated);
 
             //Поиск id мода
             if (Is_Mode) {
@@ -92,7 +94,6 @@ namespace ModsToolsClipboard
                         //Gamename.Text = gamename;
                         GameName = gamename;
                     }
-                    Gamename.Invoke(new Action(() => { Gamename.Text = GameName; }));
 
                     string gamepath = path.Replace('\\', '/') + "/steamapps/common/" + GameName;
                     if (Directory.Exists(gamepath))
@@ -142,18 +143,20 @@ namespace ModsToolsClipboard
                     if (Directory.Exists(gamepath))
                         linkLabelDirGame.Invoke(new Action(() => { linkLabelDirGame.Text = gamepath; }));
                 }
-                Gamename.Invoke(new Action(() => { Gamename.Text = GameName; }));
+
             }
 
             if (modid != null) {
                 linkLabelIDMod.Invoke(new Action(() => { linkLabelIDMod.Text = modid; }));
                 linkLabelIDGame.Invoke(new Action(() => { linkLabelIDGame.Text = gameid; }));
+                Gamename.Invoke(new Action(() => { Gamename.Text = GameName; }));
             } else {
                 if (MainForm.is_ignore_error) { 
                     this.Invoke(new Action(() => { Close(); }));
                     return;
                 }
                 linkLabelIDMod.Invoke(new Action(() => { linkLabelIDMod.Text = "0"; }));
+                linkLabelIDGame.Invoke(new Action(() => { linkLabelIDGame.Text = "0"; }));
                 Gamename.Invoke(new Action(() => { Gamename.Text = NoticeLinkErr; }));
             }
 
@@ -206,10 +209,11 @@ namespace ModsToolsClipboard
             Clipboard.SetText(((LinkLabel)sender).Text);
             hint = new ToolTip();
             hint.Show(NoticeClipboard, (LinkLabel)sender, 2000);
-            timer = new Timer();
-            timer.Interval = 3000;
+            timer = new Timer {
+                Interval = 3000,
+                Enabled = true
+            };
             timer.Tick += Timer_Tick;
-            timer.Enabled = true;
         }
 
         private void Timer_Tick(object sender, EventArgs e) {
