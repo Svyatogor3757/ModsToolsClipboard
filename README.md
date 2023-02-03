@@ -15,6 +15,8 @@ Examples:
 * Link to the game Kenshi
 >https://store.steampowered.com/app/233860/Kenshi/
 
+The program is created in C#.Net Framework 4.7.2 in Visual studio environment (IDE).
+In this repository, you can find the source code and the finished application. 
 #### Download the application: [download](ModsToolsClipboard.zip)
 
 # ModsToolsClipboard
@@ -34,4 +36,6 @@ Examples:
 * Ссылка на игру Кенши
 >https://store.steampowered.com/app/233860/Kenshi/
 
+Программа создана на языке C# .Net Framework 4.7.2 в среде Visual studio
+В данном репозитории можно найти исходный код и готовое приложение. 
 #### Скачать приложение: [скачать](ModsToolsClipboard.zip)
