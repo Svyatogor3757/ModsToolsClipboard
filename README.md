@@ -36,6 +36,6 @@ In this repository, you can find the source code and the finished application.
 * Ссылка на игру Кенши
 >https://store.steampowered.com/app/233860/Kenshi/
 
-Программа создана на языке C# .Net Framework 4.7.2 в среде Visual studio
+Программа создана на языке C# .Net Framework 4.7.2 в среде Visual studio.
 В данном репозитории можно найти исходный код и готовое приложение. 
 #### Скачать приложение: [скачать](ModsToolsClipboard.zip)
