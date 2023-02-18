@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Security.Principal;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -150,20 +152,48 @@ namespace ModsToolsClipboard
         private void button1_Click(object sender, EventArgs e) {
             string text = textBox1.Text.Trim().Replace("\r", "").Trim('&');
             if (text.Length < 3) return;
+            
+            
             char sep = '\0';
             //Определим тип входных данных
             if (text.Split(' ').Length > 1)
                 sep = ' ';
-            if (text.Split('\n').Length > 1)
-                sep = '\n';
             if (text.Split(';').Length > 1)
                 sep = ';';
-            if (sep == '\0') {
+            if (text.Split('\n').Length > 1)
+                sep = '\n';
+             
+            // Если содержимое - это HTML приколы
+            if (Regex.IsMatch(text, "(<.*a)[\\s\\S](href=\").*(\">)")) {
+                List<string> links = new List<string>();
+                string temptext = text;
+                Match texthtml = Regex.Match(text, "(<.*a)[\\s\\S](href=\")");
+                while (texthtml.Success) {
+                    string textlink_andsep = text.Substring(texthtml.Index + texthtml.Length);
+                    Match link = Regex.Match(textlink_andsep, "(\"[^>]*>)");
+
+                    string added = textlink_andsep.Substring(0, link.Index);
+                    int sremove = texthtml.Length + added.Length + link.Length;
+                    links.Add(added);
+                    temptext = temptext.Remove(texthtml.Index, sremove);
+                    temptext = temptext.Insert(texthtml.Index, string.Concat(Enumerable.Repeat("\0", sremove)));
+                    texthtml = texthtml.NextMatch();
+                }
+                string sepjoin;
+                if (links.Count > 1) {
+                    sepjoin = sep != '\0' ? sep.ToString() : (sep = '\n').ToString();
+                    textBox1.Text = text = string.Join(sepjoin, links.Distinct().ToArray());
+                } else {
+                    textBox1.Text = text = links[0];
+                }
+            }
+
+            if (sep == '\0' && (text.ToLower().IndexOf("steamcommunity.com") >= 0 || text.ToLower().IndexOf("store.steampowered.com") >= 0)) {
                 var a = new ModInfo(text, checkBoxMoreInf.Checked);
                 a.Show();
             } else {
                 foreach (string link in text.Split(sep)) {
-                    if (link.Length < 3) continue;
+                    if (link.Length < 3 | !(link.ToLower().IndexOf("steamcommunity.com") >= 0 || link.ToLower().IndexOf("store.steampowered.com") >= 0)) continue;
                     var a = new ModInfo(link, checkBoxMoreInf.Checked);
                     if (!a.IsDisposed) a.Show();
                 }
@@ -171,17 +201,17 @@ namespace ModsToolsClipboard
         }
 
         private void Form1_Shown(object sender, EventArgs e) {
-            Height = pictureBox1.Height * toint(pictureBox1.Visible)
-                   + panel1.Height * toint(panel1.Visible)
-                   + panel2.Height * toint(panel2.Visible)
-                   + panel3.Height * toint(panel3.Visible)
-                   + panel4.Height * toint(panel4.Visible)
-                   + panel5.Height * toint(panel5.Visible)
-                   + panel7.Height * toint(panel7.Visible)
+            Height = pictureBox1.Height * BoolToInt(pictureBox1.Visible)
+                   + panel1.Height * BoolToInt(panel1.Visible)
+                   + panel2.Height * BoolToInt(panel2.Visible)
+                   + panel3.Height * BoolToInt(panel3.Visible)
+                   + panel4.Height * BoolToInt(panel4.Visible)
+                   + panel5.Height * BoolToInt(panel5.Visible)
+                   + panel7.Height * BoolToInt(panel7.Visible)
                    + 34 + 8; //Рамка и прочее
         }
 
-        private int toint(bool a) {
+        private int BoolToInt(bool a) {
             return a ? 1 : 0;
         }
 
@@ -337,12 +367,12 @@ namespace ModsToolsClipboard
 
         public static void languageGet(Dictionary<string, string> currentlang, string key, ref string outputtext) {
                 if (currentlang.ContainsKey(key))
-                    outputtext = currentlang[key];
+                    outputtext = currentlang[key].Replace("\\n","\n");
         }
 
         public static string languageGet(Dictionary<string, string> currentlang, string key, string outputtext) {
             if (currentlang.ContainsKey(key))
-                return currentlang[key];
+                return currentlang[key].Replace("\\n", "\n");
             else return outputtext;
         }
 

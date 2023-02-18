@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -124,6 +124,8 @@
   <ItemGroup>
     <Content Include="app.ico" />
     <Content Include="box %281%29.ico" />
+    <Content Include="localization\english.xml" />
+    <Content Include="localization\russian.xml" />
     <None Include="Resources\empty_image.png" />
   </ItemGroup>
   <ItemGroup>
@@ -139,4 +141,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y /e "$(ProjectDir)localization\*.*" "$(TargetDir)localization\*.*"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

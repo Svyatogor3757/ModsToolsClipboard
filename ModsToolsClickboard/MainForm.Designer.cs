@@ -92,6 +92,7 @@ namespace ModsToolsClipboard
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(15, 19);
+            this.textBox1.MaxLength = 500000;
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(422, 61);

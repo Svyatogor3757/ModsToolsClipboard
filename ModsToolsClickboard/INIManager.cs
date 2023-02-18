@@ -1,8 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using System.Text;
 
-namespace ModsToolsClipboard
-{
     //Класс для чтения/записи INI-файлов
     public class INIManager
     {
@@ -49,4 +47,3 @@ namespace ModsToolsClipboard
             public static extern int WritePrivateString(string section, string key, string str, string path);
         }
     }
-}

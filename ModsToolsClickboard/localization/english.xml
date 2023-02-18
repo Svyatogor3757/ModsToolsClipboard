@@ -31,7 +31,7 @@
 <Item id="NoticeErrReestr" text="* Information about Steam was not found in the registry. This will only affect the definition of the game, but not the mod folder.."/>
 <Item id="NoticeErrSteam" text="* No Steam information found. Try running the program as an administrator so that the program checks other sections of steam\n"/>
 <Item id="NoticeErrSteamPath" text="* The path to Steam was not found...\n"/>
-<Item id="NoticeHelp" text="In this area, you can insert one or more links, mod IDs.\n use as delimiters: new line, space"/>
+<Item id="NoticeHelp" text="In this area, you can insert one or more links, mod IDs.\n use as delimiters: new line, space, symbol ;.\nThe search for links in the HTML is supported."/>
 <Item id="NoticeHelpTitle" text="Reference"/>
 <Item id="NoticeNotInstall" text="Not installed."/>
 <Item id="NoticeGameErr" text="The game is not defined."/>
